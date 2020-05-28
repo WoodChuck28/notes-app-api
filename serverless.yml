@@ -14,7 +14,7 @@ custom:
   # commands. Or fallsback to what we have set in the provider section.
   stage: ${opt:stage, self:provider.stage}
   # Set the table name here so we can use it while testing locally
-  tableName: ${self:custom.stage}-notes2
+  tableName: ${self:custom.stage}-notes
 
 provider:
   name: aws
@@ -54,7 +54,7 @@ functions:
     handler: create.main
     events:
       - http:
-          path: notes2
+          path: notes
           method: post
           cors: true
           authorizer: aws_iam
@@ -66,7 +66,7 @@ functions:
     handler: get.main
     events:
       - http:
-          path: notes2/{id}
+          path: notes/{id}
           method: get
           cors: true
           authorizer: aws_iam
@@ -78,7 +78,7 @@ functions:
     handler: list.main
     events:
       - http:
-          path: notes2
+          path: notes
           method: get
           cors: true
           authorizer: aws_iam
@@ -90,7 +90,7 @@ functions:
     handler: update.main
     events:
       - http:
-          path: notes2/{id}
+          path: notes/{id}
           method: put
           cors: true
           authorizer: aws_iam
@@ -102,7 +102,7 @@ functions:
     handler: delete.main
     events:
       - http:
-          path: notes2/{id}
+          path: notes/{id}
           method: delete
           cors: true
           authorizer: aws_iam
